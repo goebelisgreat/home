@@ -1,1 +1,808 @@
+/* =========================================================
+   GOEBEL IS GREAT
+   Main Stylesheet
+   ========================================================= */
 
+
+/* ---------------------------------------------------------
+   1. COLOR PALETTE / GLOBAL VARIABLES
+   --------------------------------------------------------- */
+
+:root {
+    --bg-main: #0f1720;
+    --bg-secondary: #17212b;
+    --bg-card: #1d2935;
+    --bg-card-hover: #243442;
+
+    --text-main: #f7f7f5;
+    --text-secondary: #c5ced6;
+    --text-muted: #8f9aa5;
+
+    --accent: #e5a94f;
+    --accent-hover: #f0bc69;
+    --accent-dark: #b77b29;
+
+    --border: rgba(255, 255, 255, 0.10);
+    --shadow: rgba(0, 0, 0, 0.35);
+
+    --max-width: 1200px;
+
+    --radius-small: 8px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+
+    --transition: 0.25s ease;
+}
+
+
+/* ---------------------------------------------------------
+   2. BASIC RESET
+   --------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+/* ---------------------------------------------------------
+   3. GENERAL PAGE LAYOUT
+   --------------------------------------------------------- */
+
+.container {
+    width: min(90%, var(--max-width));
+    margin: 0 auto;
+}
+
+section {
+    padding: 90px 0;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: 45px;
+}
+
+
+/* ---------------------------------------------------------
+   4. NAVIGATION
+   --------------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(15, 23, 32, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    width: min(92%, var(--max-width));
+    min-height: 72px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.site-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.site-logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--accent);
+}
+
+
+/* ---------------------------------------------------------
+   5. HERO / TOP BANNER
+   --------------------------------------------------------- */
+
+.hero {
+    position: relative;
+
+    min-height: 650px;
+    height: 78vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    /*
+       IMPORTANT:
+       Change this filename to whatever we name the
+       panoramic beach photo in GitHub.
+    */
+    background-image:
+        linear-gradient(
+            rgba(5, 12, 18, 0.30),
+            rgba(5, 12, 18, 0.70)
+        ),
+        url("images/hero-beach.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            var(--bg-main) 100%
+        );
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(90%, 900px);
+
+    padding: 30px;
+}
+
+.hero-eyebrow {
+    color: var(--accent);
+
+    font-size: 0.95rem;
+    font-weight: 800;
+
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(3.3rem, 9vw, 7rem);
+    line-height: 0.95;
+
+    font-weight: 900;
+    letter-spacing: -0.05em;
+
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+
+    margin-bottom: 24px;
+}
+
+.hero-description {
+    max-width: 720px;
+    margin: 0 auto 32px;
+
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: #ffffff;
+
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ---------------------------------------------------------
+   6. BUTTONS
+   --------------------------------------------------------- */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 12px 24px;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background: var(--accent);
+    color: #151515;
+}
+
+.button-primary:hover {
+    background: var(--accent-hover);
+}
+
+.button-secondary {
+    background: rgba(0, 0, 0, 0.30);
+
+    border: 1px solid rgba(255, 255, 255, 0.40);
+
+    color: white;
+}
+
+.button-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: white;
+}
+
+
+/* ---------------------------------------------------------
+   7. "HEY, I'M JEFF" INTRODUCTION
+   --------------------------------------------------------- */
+
+.intro {
+    background: var(--bg-main);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 430px) 1fr;
+
+    align-items: center;
+    gap: clamp(40px, 7vw, 90px);
+}
+
+.intro-photo {
+    position: relative;
+}
+
+.intro-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    border-radius: var(--radius-large);
+
+    box-shadow: 0 25px 60px var(--shadow);
+}
+
+.intro-photo::before {
+    content: "";
+
+    position: absolute;
+    width: 80%;
+    height: 80%;
+
+    left: -18px;
+    bottom: -18px;
+
+    border: 3px solid var(--accent);
+    border-radius: var(--radius-large);
+
+    z-index: -1;
+}
+
+.intro-content h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+.intro-content h2 span {
+    color: var(--accent);
+}
+
+.intro-content p {
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+
+    margin-bottom: 18px;
+    max-width: 680px;
+}
+
+
+/* ---------------------------------------------------------
+   8. EXPLORE MY WORLD
+   --------------------------------------------------------- */
+
+.explore {
+    background: var(--bg-secondary);
+}
+
+.explore-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.explore-header .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 420px;
+
+    border-radius: var(--radius-large);
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(229, 169, 79, 0.50);
+
+    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.35);
+}
+
+.card img {
+    width: 100%;
+    height: 240px;
+
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-label {
+    color: var(--accent);
+
+    font-size: 0.8rem;
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+.card h3 {
+    font-size: 1.55rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: var(--accent);
+
+    font-weight: 700;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.card-link::after {
+    content: "→";
+
+    transition: transform var(--transition);
+}
+
+.card:hover .card-link::after {
+    transform: translateX(5px);
+}
+
+
+/* ---------------------------------------------------------
+   9. PHOTO / LIFE STRIP
+   --------------------------------------------------------- */
+
+.life {
+    background: var(--bg-main);
+}
+
+.life-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    grid-auto-rows: 230px;
+
+    gap: 15px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: var(--radius-medium);
+
+    transition:
+        transform var(--transition),
+        opacity var(--transition);
+}
+
+.photo-grid img:hover {
+    transform: scale(1.02);
+}
+
+.photo-grid .wide {
+    grid-column: span 2;
+}
+
+.photo-grid .tall {
+    grid-row: span 2;
+}
+
+
+/* ---------------------------------------------------------
+   10. QUOTE / PERSONAL STATEMENT
+   --------------------------------------------------------- */
+
+.personal-statement {
+    padding: 110px 0;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--bg-secondary),
+            #101922
+        );
+}
+
+.personal-statement blockquote {
+    width: min(90%, 850px);
+    margin: 0 auto;
+
+    font-size: clamp(1.7rem, 4vw, 3rem);
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+.personal-statement blockquote span {
+    color: var(--accent);
+}
+
+
+/* ---------------------------------------------------------
+   11. FOOTER
+   --------------------------------------------------------- */
+
+.site-footer {
+    padding: 50px 0;
+
+    background: #090e13;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--accent);
+}
+
+.site-footer p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+
+    transition: color var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+
+/* ---------------------------------------------------------
+   12. ACCESSIBILITY / KEYBOARD NAVIGATION
+   --------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
+/* ---------------------------------------------------------
+   13. TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .navbar {
+        min-height: 64px;
+    }
+
+    .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        min-height: 580px;
+        height: 75vh;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-photo {
+        width: min(85%, 430px);
+        margin: 0 auto;
+    }
+
+    .intro-content {
+        text-align: center;
+    }
+
+    .intro-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .photo-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ---------------------------------------------------------
+   14. PHONE
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+    section {
+        padding: 55px 0;
+    }
+
+    .navbar {
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding: 12px 0;
+        gap: 8px;
+    }
+
+    .nav-links {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 14px;
+
+        font-size: 0.82rem;
+
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        min-height: 560px;
+        height: 80vh;
+
+        background-position: center center;
+    }
+
+    .hero-content {
+        padding: 15px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 16vw, 5rem);
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+
+        width: min(100%, 320px);
+
+        margin: 0 auto;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .intro-photo {
+        width: 90%;
+    }
+
+    .intro-photo::before {
+        left: -10px;
+        bottom: -10px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: auto;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 280px;
+    }
+
+    .photo-grid .wide,
+    .photo-grid .tall {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .personal-statement {
+        padding: 75px 0;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   15. REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
