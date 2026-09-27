@@ -272,6 +272,10 @@ section {
     gap: 14px;
 }
 
+.hero .button-group .button {
+    min-width: 200px;
+}
+
 .button {
     display: inline-flex;
     align-items: center;
